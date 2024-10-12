@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+            function crouton() {
+                const random = Math.floor((Math.random() * 8)) + 1;
+                document.querySelector("#crouton").src = `croutons/crouton${random}.png`;
+                document.title = `crouton ${random}`;
+            }
+        </script>
+        <style>
+            img {
+                width: 50px;
+            }
+        </style>
+    </head>
+    <title>crouton</title>
+    <body onload="crouton();">
+        <img id="crouton">
+        <noscript>
+            <img src="croutons/crouton1.png">
+        </noscript>
+    </body>
+</html>
