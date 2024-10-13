@@ -31,7 +31,7 @@
 
                 image.src = croutonPath;
                 icon.href = croutonPath;
-                document.title = `crouton ${random}`;
+                image.alt = document.title = `crouton ${random}`;
             }
         </script>
         <style>
@@ -43,7 +43,7 @@
     </head>
     <body onload="crouton();">
         <noscript>
-            <img id="crouton" src="croutons/crouton1.png">
+            <img id="crouton" src="croutons/crouton1.png" alt="crouton">
         </noscript>
     </body>
 </html>
