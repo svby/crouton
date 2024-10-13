@@ -6,29 +6,38 @@
             <link rel="icon" href="croutons/crouton1.png">
         </noscript>
         <script type="text/javascript">
+            let lastCrouton = 0;
+
             function crouton() {
-                const random = Math.floor((Math.random() * 8)) + 1;
+                let random;
+                do { random = Math.floor((Math.random() * 8)) + 1; } while (random === lastCrouton);
+                lastCrouton = random;
                 const croutonPath = `croutons/crouton${random}.png`;
                 
-                const crouton = document.createElement('img');
-                crouton.id = "crouton";
-                crouton.src = croutonPath;
-                document.body.appendChild(crouton);
-
-                document.title = `crouton ${random}`;
-
+                let image = document.querySelector("#crouton");
+                if (!image) {
+                    image = document.createElement("img");
+                    image.id = "crouton";
+                    image.addEventListener("click", crouton);
+                    document.body.appendChild(image);
+                }
+                
                 let icon = document.querySelector("link[rel='icon']");
                 if (!icon) {
                     icon = document.createElement("link");
                     icon.rel = "icon";
                     document.head.appendChild(icon);
                 }
+
+                image.src = croutonPath;
                 icon.href = croutonPath;
+                document.title = `crouton ${random}`;
             }
         </script>
         <style>
             #crouton {
                 width: 50px;
+                cursor: pointer;
             }
         </style>
     </head>
